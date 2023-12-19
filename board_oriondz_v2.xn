@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+  <Type>Board</Type>
+  <Name>Orion-ZDZ V2</Name>
+
+  <Declarations>
+    <Declaration>tileref tile[2]</Declaration>
+  </Declarations>
+
+  <Packages>
+    <Package id="0" Type="XS2-UFnA-512-TQ128">
+      <Nodes>
+        <Node Id="0" InPackageId="0" Type="XS2-L16A-512" Oscillator="24MHz" SystemFrequency="500MHz" ReferenceFrequency="100MHz">
+          <Boot>
+            <Source Location="flash"/>
+          </Boot>
+          <Tile Number="0" Reference="tile[0]">
+            <Port Location="XS1_PORT_1A" Name="T0_PHY_RESET"/>
+
+            <Port Location="XS1_PORT_4A" Name="T0_PAD_4A"/>
+            
+            <Port Location="XS1_PORT_1B" Name="T0_PORT_SQI_CS"/>
+            <Port Location="XS1_PORT_1C" Name="T0_PORT_SQI_SCLK"/>
+            <Port Location="XS1_PORT_4B" Name="T0_PORT_SQI_SIO"/>
+
+            <Port Location="XS1_PORT_1D" Name="T0_WATCHDOG"/>
+            <Port Location="XS1_PORT_1E" Name="T0_PAD_1E"/>
+            <Port Location="XS1_PORT_1F" Name="T0_PAD_1F"/>
+
+            <Port Location="XS1_PORT_8B" Name="T0_RELAYS"/>
+
+            <Port Location="XS1_PORT_1G" Name="T0_ADC_CLK"/>
+            <Port Location="XS1_PORT_1H" Name="T0_IN_1"/>
+            <Port Location="XS1_PORT_1I" Name="T0_IN_2"/>
+            <Port Location="XS1_PORT_1J" Name="T0_IN_3"/>
+
+            <Port Location="XS1_PORT_8C" Name="T0_LEDS"/>
+            
+            <Port Location="XS1_PORT_1K" Name="T0_LED_TEST"/>
+            <Port Location="XS1_PORT_1L" Name="T0_LED_WORK"/>
+            
+            <Port Location="XS1_PORT_8D" Name="T0_SWITCHES"/>
+          </Tile>
+          <Tile Number="1" Reference="tile[1]">
+            <Port Location="XS1_PORT_1A" Name="T1_PAD_1A"/>
+            <Port Location="XS1_PORT_1B" Name="T1_PAD_1B"/>
+            <Port Location="XS1_PORT_8A" Name="T1_PAD_8A"/>
+
+            <Port Location="XS1_PORT_1C" Name="T1_PHY_MDIO"/>
+            <Port Location="XS1_PORT_1D" Name="T1_PHY_MDC"/>
+
+            <Port Location="XS1_PORT_4E" Name="T1_PHY_RXD"/>
+            <Port Location="XS1_PORT_4F" Name="T1_PHY_TXD"/>
+            
+            <Port Location="XS1_PORT_1L" Name="T1_PHY_RXCLK"/>
+            <Port Location="XS1_PORT_1M" Name="T1_PHY_TXCLK"/>
+            <Port Location="XS1_PORT_1N" Name="T1_PHY_RXDV"/>
+            <Port Location="XS1_PORT_1O" Name="T1_PHY_TXEN"/>
+            <Port Location="XS1_PORT_1P" Name="T1_PHY_RXERR"/>
+          </Tile>
+        </Node>
+      </Nodes>
+    </Package>
+  </Packages>
+
+  <ExternalDevices>
+    <Device NodeId="0" Tile="0" Class="SQIFlash" Name="flash">
+      <Attribute Name="PORT_SQI_CS" Value="T0_PORT_SQI_CS"/>
+      <Attribute Name="PORT_SQI_SCLK" Value="T0_PORT_SQI_SCLK"/>
+      <Attribute Name="PORT_SQI_SIO" Value="T0_PORT_SQI_SIO"/>
+    </Device>
+  </ExternalDevices>
+
+  <JTAGChain>
+    <JTAGDevice NodeId="0"/>
+  </JTAGChain>
+</Network>
